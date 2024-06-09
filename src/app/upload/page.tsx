@@ -1,3 +1,5 @@
+import LoginRegister from '@/components/LoginRegister'
+
 export default function Upload() {
   let user = null
 
@@ -6,7 +8,7 @@ export default function Upload() {
   }
 
   if (!user) {
-    return <div>Please log in to upload your songs.</div>
+    return <LoginRegister />
   }
 
   return <h1>upload</h1>
