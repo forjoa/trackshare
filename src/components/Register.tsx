@@ -1,3 +1,5 @@
+import Input from './ui/Input'
+
 export default function Register() {
   return (
     <div className='mx-auto max-w-md space-y-6'>
@@ -17,8 +19,7 @@ export default function Register() {
               >
                 Artist Name
               </label>
-              <input
-                className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
+              <Input
                 id='artist-name'
                 placeholder='Enter your artist name'
                 required
@@ -31,8 +32,7 @@ export default function Register() {
               >
                 Full Name
               </label>
-              <input
-                className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
+              <Input
                 id='full-name'
                 placeholder='Enter your full name'
                 required
@@ -46,8 +46,7 @@ export default function Register() {
             >
               Email
             </label>
-            <input
-              className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
+            <Input
               id='email'
               placeholder='Enter your email'
               required
@@ -61,12 +60,7 @@ export default function Register() {
             >
               Password
             </label>
-            <input
-              className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
-              id='password'
-              required
-              type='password'
-            />
+            <Input id='password' required type='password' />
           </div>
         </div>
         <div className='flex items-center p-6'>
