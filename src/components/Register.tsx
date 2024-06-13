@@ -1,6 +1,29 @@
+'use client'
+import { ChangeEvent, useState } from 'react'
 import Input from './ui/Input'
+import { Artist } from '@/lib/types'
 
 export default function Register() {
+  const [newArtist, setNewArtist] = useState<Artist>({
+    artist_name: '',
+    fullname: '',
+    email: '',
+    password: '',
+  })
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+
+    const { name, value } = e.currentTarget
+
+    setNewArtist((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+
+    console.log(newArtist)
+  }
+
   return (
     <div className='mx-auto max-w-md space-y-6'>
       <div className='space-y-2 text-center'>
@@ -20,10 +43,12 @@ export default function Register() {
                 Artist Name
               </label>
               <Input
-                name='artist-name'
+                name='artist_name'
                 placeholder='Enter your artist name'
                 type='text'
                 required
+                value={newArtist.artist_name}
+                onChange={handleChange}
               />
             </div>
             <div className='space-y-2'>
@@ -34,10 +59,12 @@ export default function Register() {
                 Full Name
               </label>
               <Input
-                name='full-name'
+                name='fullname'
                 placeholder='Enter your full name'
                 type='text'
                 required
+                value={newArtist.fullname}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -53,6 +80,8 @@ export default function Register() {
               placeholder='Enter your email'
               required
               type='email'
+              value={newArtist.email}
+              onChange={handleChange}
             />
           </div>
           <div className='space-y-2'>
@@ -62,7 +91,13 @@ export default function Register() {
             >
               Password
             </label>
-            <Input name='password' required type='password' />
+            <Input
+              name='password'
+              required
+              type='password'
+              value={newArtist.password}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className='flex items-center p-6'>
