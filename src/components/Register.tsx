@@ -20,8 +20,6 @@ export default function Register() {
       ...prev,
       [name]: value,
     }))
-
-    console.log(newArtist)
   }
 
   return (
