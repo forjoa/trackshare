@@ -1,4 +1,24 @@
-export default function Login() {
+import { Artist, ChangePages } from '@/lib/types'
+import Input from './ui/Input'
+import { ChangeEvent, useState } from 'react'
+
+export default function Login({ changePages }: ChangePages) {
+  const [artist, setArtist] = useState<Artist>({
+    email: '',
+    password: '',
+  })
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+
+    const { name, value } = e.currentTarget
+
+    setArtist((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
   return (
     <div className='mx-auto max-w-md space-y-6'>
       <div className='space-y-2 text-center'>
@@ -8,7 +28,7 @@ export default function Login() {
         </p>
       </div>
       <form className='rounded-lg border border-gray-800 shadow-sm'>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='p-6 grid grid-cols-2 gap-4'>
           <div className='space-y-2'>
             <label
               className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
@@ -16,12 +36,13 @@ export default function Login() {
             >
               Email
             </label>
-            <input
-              className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
-              id='email'
+            <Input
+              name='email'
               placeholder='Enter your email'
               required
               type='email'
+              value={artist.email}
+              onChange={handleChange}
             />
           </div>
           <div className='space-y-2'>
@@ -31,11 +52,12 @@ export default function Login() {
             >
               Password
             </label>
-            <input
-              className='flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
-              id='password'
+            <Input
+              name='password'
               required
               type='password'
+              value={artist.password}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -46,6 +68,9 @@ export default function Login() {
           >
             Login
           </button>
+        </div>
+        <div className='p-6 pt-0 text-blue-500 w-full flex justify-end'>
+          <button onClick={() => changePages(false)}>Register</button>
         </div>
       </form>
     </div>

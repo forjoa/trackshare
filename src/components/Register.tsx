@@ -1,9 +1,9 @@
 'use client'
 import { ChangeEvent, useState } from 'react'
 import Input from './ui/Input'
-import { Artist } from '@/lib/types'
+import { Artist, ChangePages } from '@/lib/types'
 
-export default function Register() {
+export default function Register({ changePages } : ChangePages) {
   const [newArtist, setNewArtist] = useState<Artist>({
     artist_name: '',
     fullname: '',
@@ -45,7 +45,7 @@ export default function Register() {
                 placeholder='Enter your artist name'
                 type='text'
                 required
-                value={newArtist.artist_name}
+                value={newArtist.artist_name as string}
                 onChange={handleChange}
               />
             </div>
@@ -61,7 +61,7 @@ export default function Register() {
                 placeholder='Enter your full name'
                 type='text'
                 required
-                value={newArtist.fullname}
+                value={newArtist.fullname as string}
                 onChange={handleChange}
               />
             </div>
@@ -104,6 +104,11 @@ export default function Register() {
             type='submit'
           >
             Register
+          </button>
+        </div>
+        <div className='p-6 pt-0 text-blue-500 w-full flex justify-end'>
+          <button onClick={() => changePages(true)}>
+            Login
           </button>
         </div>
       </form>

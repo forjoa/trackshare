@@ -6,5 +6,5 @@ import { useState } from 'react'
 export default function LoginRegister() {
   const [isLogin, setIsLogin] = useState(false)
 
-  return isLogin ? <Login /> : <Register />
+  return isLogin ? <Login changePages={setIsLogin}/> : <Register changePages={setIsLogin}/>
 }
