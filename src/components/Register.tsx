@@ -20,8 +20,9 @@ export default function Register() {
                 Artist Name
               </label>
               <Input
-                id='artist-name'
+                name='artist-name'
                 placeholder='Enter your artist name'
+                type='text'
                 required
               />
             </div>
@@ -33,8 +34,9 @@ export default function Register() {
                 Full Name
               </label>
               <Input
-                id='full-name'
+                name='full-name'
                 placeholder='Enter your full name'
+                type='text'
                 required
               />
             </div>
@@ -47,7 +49,7 @@ export default function Register() {
               Email
             </label>
             <Input
-              id='email'
+              name='email'
               placeholder='Enter your email'
               required
               type='email'
@@ -60,7 +62,7 @@ export default function Register() {
             >
               Password
             </label>
-            <Input id='password' required type='password' />
+            <Input name='password' required type='password' />
           </div>
         </div>
         <div className='flex items-center p-6'>
