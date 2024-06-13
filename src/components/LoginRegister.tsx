@@ -4,7 +4,7 @@ import Login from './Login'
 import { useState } from 'react'
 
 export default function LoginRegister() {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   return isLogin ? <Login changePages={setIsLogin}/> : <Register changePages={setIsLogin}/>
 }
