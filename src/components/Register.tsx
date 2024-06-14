@@ -1,9 +1,10 @@
 'use client'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import Input from './ui/Input'
 import { Artist, ChangePages } from '@/lib/types'
+import { Toaster, toast } from 'sonner'
 
-export default function Register({ changePages } : ChangePages) {
+export default function Register({ changePages }: ChangePages) {
   const [newArtist, setNewArtist] = useState<Artist>({
     artist_name: '',
     fullname: '',
@@ -22,15 +23,42 @@ export default function Register({ changePages } : ChangePages) {
     }))
   }
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const result = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newArtist),
+    })
+
+    const response = await result.json()
+
+    if (!response.success) {
+      toast.error(response.message)
+    } else {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('user', response.token)
+        window.location.reload()
+      }
+    }
+  }
+
   return (
     <div className='mx-auto max-w-md space-y-6'>
+      <Toaster position='top-center' />
       <div className='space-y-2 text-center'>
         <h1 className='text-3xl font-bold'>Register as an Artist</h1>
         <p className='text-gray-500 dark:text-gray-400'>
           Create your account to start showcasing your art.
         </p>
       </div>
-      <form className='rounded-lg border border-gray-800 shadow-sm'>
+      <form
+        className='rounded-lg border border-gray-800 shadow-sm'
+        onSubmit={handleSubmit}
+      >
         <div className='p-6 space-y-4'>
           <div className='grid grid-cols-2 gap-4'>
             <div className='space-y-2'>
@@ -107,9 +135,7 @@ export default function Register({ changePages } : ChangePages) {
           </button>
         </div>
         <div className='p-6 pt-0 text-blue-500 w-full flex justify-end'>
-          <button onClick={() => changePages(true)}>
-            Login
-          </button>
+          <button onClick={() => changePages(true)}>Login</button>
         </div>
       </form>
     </div>
