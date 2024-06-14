@@ -14,8 +14,6 @@ export default function Upload() {
     }
   }, [])
 
-  console.log(user)
-
   if (!user) {
     return <LoginRegister />
   }
