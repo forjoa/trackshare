@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import LoginRegister from '@/components/LoginRegister'
 import jwt from 'jsonwebtoken'
 import { Artist } from '@/lib/types'
+import UploadForm from '@/components/UploadForm'
 
 export default function Upload() {
   const [user, setUser] = useState<Artist | null>(null)
@@ -18,5 +19,5 @@ export default function Upload() {
     return <LoginRegister />
   }
 
-  return <h1>Upload</h1>
+  return <UploadForm />
 }
