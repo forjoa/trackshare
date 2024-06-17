@@ -2,22 +2,10 @@ import { useState } from 'react'
 import { PlusIcon } from '@/assets/icons'
 import Input from './ui/Input'
 import CustomSelect from './CustomSelect'
+import { Artist, EventI, PlatformData } from '@/lib/types'
 
-interface PlatformData {
-  platform: string
-  link: string
-}
-
-interface EventI {
-  target: {
-    name: PlatformDataKey
-    value: string
-  }
-}
-
-type PlatformDataKey = 'platform' | 'link'
-
-export default function UploadForm() {
+export default function UploadForm({ artist }: { artist: Artist }) {
+  const [songName, setSongName] = useState('')
   const [platforms, setPlatforms] = useState<PlatformData[]>([
     { platform: '', link: '' },
   ])
@@ -37,10 +25,18 @@ export default function UploadForm() {
     setPlatforms(newPlatforms)
   }
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+
     // Aquí puedes manejar la lógica para enviar los datos al backend
-    console.log('Platforms:', platforms)
+    console.log(
+      'Artist ID:',
+      artist.artist_id,
+      'Song name:',
+      songName,
+      'Platforms:',
+      platforms
+    )
   }
 
   return (
@@ -56,6 +52,16 @@ export default function UploadForm() {
             </p>
           </div>
           <div className='p-6 grid gap-4'>
+            <div className='grid gap-2'>
+              <label htmlFor='name'>Enter your song name</label>
+              <Input
+                name='name'
+                required
+                type='text'
+                value={songName}
+                onChange={(e) => setSongName(e.target.value)}
+              />
+            </div>
             {platforms.map((platformData, index) => (
               <div className='grid gap-2' key={index}>
                 <label
@@ -87,13 +93,13 @@ export default function UploadForm() {
                 />
                 {index > 0 && (
                   <div className='w-full flex justify-end'>
-                  <button
-                    type='button'
-                    onClick={() => removePlatform(index)}
-                    className='text-red-500 border border-red-500 bg-red-500 bg-opacity-40 py-1 px-4 rounded'
-                  >
-                    Remove
-                  </button>
+                    <button
+                      type='button'
+                      onClick={() => removePlatform(index)}
+                      className='text-red-500 border border-red-500 bg-red-500 bg-opacity-40 py-1 px-4 rounded'
+                    >
+                      Remove
+                    </button>
                   </div>
                 )}
               </div>

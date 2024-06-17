@@ -19,5 +19,5 @@ export default function Upload() {
     return <LoginRegister />
   }
 
-  return <UploadForm />
+  return <UploadForm artist={user} />
 }

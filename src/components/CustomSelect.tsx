@@ -1,7 +1,6 @@
 import { PlatformsSelect, platforms } from '@/assets/utils/platforms'
+import { PlatformDataKey } from '@/lib/types'
 import { useState } from 'react'
-
-type PlatformDataKey = 'platform' | 'link'
 
 interface CustomSelectProps {
   name: string
