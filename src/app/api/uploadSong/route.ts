@@ -29,6 +29,8 @@ export async function POST(req: NextRequest) {
 
     for (let i = 0; i < platforms.length; i++) {
       const { platform, link } = platforms[i]
+      console.log(platform, link, songId);
+      
       if (!platform || !link) {
         return NextResponse.json(
           {
@@ -52,10 +54,12 @@ export async function POST(req: NextRequest) {
       message: 'Song and platforms inserted correctly!',
     })
   } catch (error) {
+    console.log(error);
+    
     return NextResponse.json(
       {
         success: false,
-        message: `Error while sending the data`,
+        message: `Error while sending the data ${error}`,
       },
       {
         status: 500,

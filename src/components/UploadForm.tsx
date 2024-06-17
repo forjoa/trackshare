@@ -3,7 +3,7 @@ import { PlusIcon } from '@/assets/icons'
 import Input from './ui/Input'
 import CustomSelect from './CustomSelect'
 import { Artist, EventI, PlatformData } from '@/lib/types'
-import { toast } from 'sonner'
+import { Toaster, toast } from 'sonner'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
   const [songName, setSongName] = useState('')
@@ -47,25 +47,14 @@ export default function UploadForm({ artist }: { artist: Artist }) {
       } else {
         toast.error('Error uploading your song')
       }
-
-      console.log(result)
     } catch {
       toast.error('Error uploading your song')
     }
-
-    // Aquí puedes manejar la lógica para enviar los datos al backend
-    console.log(
-      'Artist ID:',
-      artist.artist_id,
-      'Song name:',
-      songName,
-      'Platforms:',
-      platforms
-    )
   }
 
   return (
     <div className='mx-auto max-w-md space-y-6'>
+      <Toaster position='top-center' />
       <div className='rounded-lg border border-gray-800 bg-card text-card-foreground shadow-sm w-full max-w-md'>
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col space-y-1.5 p-6'>
