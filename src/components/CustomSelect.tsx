@@ -1,24 +1,11 @@
-import { AppleMusic, Spotify } from '@/assets/icons'
+import { PlatformsSelect, platforms } from '@/assets/utils/platforms'
 import { useState } from 'react'
 
 const CustomSelect = () => {
   const [selectedPlatform, setSelectedPlatform] = useState('Select platform')
   const [isOpen, setIsOpen] = useState(false)
 
-  const platforms = [
-    {
-      value: 'spotify',
-      label: 'Spotify',
-      icon: <Spotify />,
-    },
-    {
-      value: 'apple',
-      label: 'Apple Music',
-      icon: <AppleMusic />,
-    },
-  ]
-
-  const handleSelect = (platform: any) => {
+  const handleSelect = (platform: PlatformsSelect) => {
     setSelectedPlatform(platform.label)
     setIsOpen(false)
   }
@@ -53,7 +40,7 @@ const CustomSelect = () => {
               className='flex items-center p-2 cursor-pointer hover:bg-gray-700'
               onClick={() => handleSelect(platform)}
             >
-              {platform.icon}
+              <platform.icon />
               <span className='ml-2'>{platform.label}</span>
             </div>
           ))}

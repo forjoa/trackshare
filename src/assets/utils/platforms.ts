@@ -1,6 +1,6 @@
 import { Spotify, AppleMusic, Youtube } from '../icons'
 
-interface PlatformsSelect {
+export interface PlatformsSelect {
   value: string
   label: string
   icon: () => JSX.Element
@@ -20,6 +20,6 @@ export const platforms: PlatformsSelect[] = [
   {
     value: 'youtube',
     label: 'YouTube',
-    icon: Youtube
-  }
+    icon: Youtube,
+  },
 ]
