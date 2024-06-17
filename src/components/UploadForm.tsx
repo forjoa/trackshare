@@ -86,13 +86,15 @@ export default function UploadForm() {
                   }
                 />
                 {index > 0 && (
+                  <div className='w-full flex justify-end'>
                   <button
                     type='button'
                     onClick={() => removePlatform(index)}
-                    className='text-red-500'
+                    className='text-red-500 border border-red-500 bg-red-500 bg-opacity-40 py-1 px-4 rounded'
                   >
                     Remove
                   </button>
+                  </div>
                 )}
               </div>
             ))}
