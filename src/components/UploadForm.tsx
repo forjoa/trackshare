@@ -11,7 +11,7 @@ export default function UploadForm() {
             <h3 className='whitespace-nowrap text-2xl font-semibold leading-none tracking-tight'>
               Add Music Links
             </h3>
-            <p className='text-sm text-muted-foreground'>
+            <p className='text-sm text-gray-500'>
               Enter links to your music on different platforms.
             </p>
           </div>
