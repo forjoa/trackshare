@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function NavigationBar() {
   return (
-    <header className='px-4 lg:px-6 h-14 flex items-center sticky top-0 backdrop-blur-xl'>
+    <header className='px-4 lg:px-6 h-14 flex items-center sticky top-0 backdrop-blur-xl z-50'>
       <Link className='flex items-center justify-center gap-1' href='/'>
         <NoteIcon />
         <span>Trackshare</span>
