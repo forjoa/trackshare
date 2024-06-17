@@ -3,6 +3,7 @@ import { PlusIcon } from '@/assets/icons'
 import Input from './ui/Input'
 import CustomSelect from './CustomSelect'
 import { Artist, EventI, PlatformData } from '@/lib/types'
+import { toast } from 'sonner'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
   const [songName, setSongName] = useState('')
@@ -27,6 +28,30 @@ export default function UploadForm({ artist }: { artist: Artist }) {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+
+    try {
+      const result = await fetch('/api/uploadSong', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          artistId: artist.artist_id,
+          song: songName,
+          platforms,
+        }),
+      })
+
+      if (result.ok) {
+        toast.success('Song uploaded correctly')
+      } else {
+        toast.error('Error uploading your song')
+      }
+
+      console.log(result)
+    } catch {
+      toast.error('Error uploading your song')
+    }
 
     // Aquí puedes manejar la lógica para enviar los datos al backend
     console.log(
