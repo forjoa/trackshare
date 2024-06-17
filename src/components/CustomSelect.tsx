@@ -1,19 +1,36 @@
 import { PlatformsSelect, platforms } from '@/assets/utils/platforms'
 import { useState } from 'react'
 
-const CustomSelect = () => {
-  const [selectedPlatform, setSelectedPlatform] = useState('Select platform')
+type PlatformDataKey = 'platform' | 'link'
+
+interface CustomSelectProps {
+  name: string
+  value: string
+  onChange: (event: {
+    target: { name: PlatformDataKey; value: string }
+  }) => void
+}
+
+const CustomSelect = ({ name, value, onChange }: CustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleSelect = (platform: PlatformsSelect) => {
-    setSelectedPlatform(platform.label)
+    onChange({
+      target: {
+        name: name as unknown as PlatformDataKey,
+        value: platform.value,
+      },
+    })
     setIsOpen(false)
   }
+
+  const selectedPlatform =
+    platforms.find((p) => p.value === value)?.label || 'Select platform'
 
   return (
     <div className='relative w-full max-w-md'>
       <div
-        className='flex h-10 w-full items-center justify-between rounded-md border border-gray-800 text-white bg-white bg-opacity-10 px-3 py-2  cursor-pointer'
+        className='flex h-10 w-full items-center justify-between rounded-md border border-gray-800 text-white bg-white bg-opacity-10 px-3 py-2 cursor-pointer'
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{selectedPlatform}</span>
