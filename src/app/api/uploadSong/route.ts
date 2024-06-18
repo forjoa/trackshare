@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
 
       for (let i = 0; i < platforms.length; i++) {
         const { platform, link } = platforms[i]
-        console.log(platform, link, songId)
 
         if (!platform || !link) {
           console.log(`Invalid platform data at index ${i}`)
@@ -61,7 +60,6 @@ export async function POST(req: NextRequest) {
         message: 'Song and platforms inserted correctly!',
       })
     } catch (error) {
-      console.log('Error during transaction, rolling back:', error)
       await transaction.rollback()
       return NextResponse.json(
         {
@@ -76,7 +74,6 @@ export async function POST(req: NextRequest) {
       await transaction.close()
     }
   } catch (error) {
-    console.log('Error outside transaction:', error)
     return NextResponse.json(
       {
         success: false,
