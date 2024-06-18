@@ -8,7 +8,7 @@ export default function NavigationBar() {
         <NoteIcon />
         <span>Trackshare</span>
       </Link>
-      <nav className='ml-auto flex gap-4 sm:gap-6'>
+      <nav className='ml-auto flex gap-4 sm:gap-6 items-center'>
         <Link
           className='text-sm font-medium hover:underline underline-offset-4'
           href='/'
@@ -16,7 +16,7 @@ export default function NavigationBar() {
           Explore
         </Link>
         <Link
-          className='text-sm font-medium hover:underline underline-offset-4'
+          className='text-sm font-medium hover:underline underline-offset-4 bg-white text-black py-2 px-4 rounded'
           href='/upload'
         >
           Upload
