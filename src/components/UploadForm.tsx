@@ -65,6 +65,16 @@ export default function UploadForm({ artist }: { artist: Artist }) {
               Enter links to your music on different platforms.
             </p>
           </div>
+          <div className='px-6 flex flex-col'>
+            <span className='text-white'>Song image</span>
+            <label
+              htmlFor='file-upload'
+              className='relative cursor-pointer bg-white rounded-md border border-gray-300 hover:border-gray-400 focus-within:border-blue-500 px-4 py-2 inline-flex items-center space-x-2'
+            >
+              <input id='file-upload' type='file' className='hidden' />
+            </label>
+          </div>
+
           <div className='p-6 grid gap-4'>
             <div className='grid gap-2'>
               <label htmlFor='name'>Enter your song name</label>
