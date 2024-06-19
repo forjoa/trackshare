@@ -25,3 +25,9 @@ export interface EventI {
 }
 
 export type PlatformDataKey = 'platform' | 'link'
+
+export interface Song {
+  song_id?: number
+  title: string
+  artist_id?: number
+}
