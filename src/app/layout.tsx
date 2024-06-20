@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <link rel='icon' href='/favicon.png' sizes='any' />
+        <link rel='icon' href='/favico.png' sizes='any' />
       </head>
       <body className={poppins.className}>
         <div className='flex flex-col justify-between min-h-[100dvh]'>
