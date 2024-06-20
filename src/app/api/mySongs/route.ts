@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
       sql: `SELECT 
                 songs.song_id, 
                 songs.title, 
-                songs.artist_id
+                songs.artist_id,
+                songs.photo
             FROM 
                 songs
             JOIN 

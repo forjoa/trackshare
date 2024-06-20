@@ -47,8 +47,17 @@ export default function MySongs() {
       <div className='flex flex-col gap-4'>
         {mySongs?.length != undefined ? (
           mySongs.map((song, index) => (
-            <div key={index} className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4'>
-                <Image src={placeholder} alt='Song image' className='h-16 w-16 rounded'/>
+            <div
+              key={index}
+              className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4'
+            >
+              <Image
+                src={song.photo ? song.photo : placeholder}
+                alt='Song image'
+                className='h-16 w-16 rounded'
+                width={100}
+                height={100}
+              />
               <p>{song.title}</p>
             </div>
           ))
