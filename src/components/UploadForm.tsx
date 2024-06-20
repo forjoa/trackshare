@@ -87,7 +87,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
             </label>
           </div>
 
-          <div className='p-6 grid gap-4'>
+          <div className='px-6 pb-6 pt-2 grid gap-2'>
             <div className='grid gap-2'>
               <label htmlFor='name'>Enter your song name</label>
               <Input
@@ -101,7 +101,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
             {platforms.map((platformData, index) => (
               <div className='grid gap-2' key={index}>
                 <label
-                  className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+                  className='leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
                   htmlFor={`platform-${index}`}
                 >
                   Platform
@@ -112,7 +112,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
                   onChange={(event) => handlePlatformChange(index, event)}
                 />
                 <label
-                  className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+                  className='leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
                   htmlFor={`link-${index}`}
                 >
                   Link
@@ -149,7 +149,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
               <span className='sr-only'>Add another platform</span>
             </button>
           </div>
-          <div className='flex items-center p-6'>
+          <div className='flex items-center px-6 pb-6'>
             <button
               type='submit'
               className='bg-white text-black inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full'
