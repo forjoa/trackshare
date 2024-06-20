@@ -4,7 +4,7 @@ import './globals.css'
 import NavigationBar from '@/components/NavigationBar'
 import Footer from '@/components/Footer'
 
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '800']})
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '800'] })
 
 export const metadata: Metadata = {
   title: 'Trackshare - The easiest way to share your music',
@@ -18,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <link rel='icon' href='/favicon.png' sizes='any' />
+      </head>
       <body className={poppins.className}>
         <div className='flex flex-col justify-between min-h-[100dvh]'>
           <NavigationBar />
