@@ -18,6 +18,71 @@ This is a web aplication to upload the links from your songs, you can upload as 
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 
+## Database Schema
+
+### Artists Table
+
+The `artists` table stores information about the artists.
+
+CREATE TABLE IF NOT EXISTS
+  artists (
+    artist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_name TEXT,
+    fullname TEXT,
+    email TEXT,
+    password TEXT
+  );
+
+| Column      | Type    | Description               |
+| ----------- | ------- | ------------------------- |
+| artist_id   | INTEGER | Primary key, autoincrement |
+| artist_name | TEXT    | The stage name of the artist |
+| fullname    | TEXT    | The full name of the artist |
+| email       | TEXT    | The email address of the artist |
+| password    | TEXT    | The hashed password of the artist |
+
+### Songs Table
+
+The `songs` table stores information about the songs.
+
+CREATE TABLE IF NOT EXISTS
+  songs (
+    song_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    artist_id INTEGER,
+    FOREIGN KEY (artist_id) REFERENCES artists (artist_id)
+  );
+
+ALTER TABLE songs
+ADD COLUMN photo TEXT;
+
+| Column    | Type    | Description                               |
+| --------- | ------- | ----------------------------------------- |
+| song_id   | INTEGER | Primary key, autoincrement                |
+| title     | TEXT    | The title of the song                     |
+| artist_id | INTEGER | Foreign key referencing `artists` table   |
+| photo     | TEXT    | The filename or path of the song's photo  |
+
+### Platforms Table
+
+The `platforms` table stores information about the platforms where songs are available.
+
+CREATE TABLE IF NOT EXISTS
+  platforms (
+    platform_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    platform TEXT,
+    link TEXT,
+    song_id INTEGER,
+    FOREIGN KEY (song_id) REFERENCES songs (song_id)
+  );
+
+| Column      | Type    | Description                               |
+| ----------- | ------- | ----------------------------------------- |
+| platform_id | INTEGER | Primary key, autoincrement                |
+| platform    | TEXT    | The name of the platform                  |
+| link        | TEXT    | The link to the song on the platform      |
+| song_id     | INTEGER | Foreign key referencing `songs` table     |
+
 ## Dependencies
 
 ### @libsql/client
