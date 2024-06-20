@@ -4,6 +4,7 @@ import Input from './ui/Input'
 import CustomSelect from './CustomSelect'
 import { Artist, EventI, PlatformData } from '@/lib/types'
 import { Toaster, toast } from 'sonner'
+import { UploadIcon } from '@/assets/icons'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
   const [songName, setSongName] = useState('')
@@ -69,8 +70,9 @@ export default function UploadForm({ artist }: { artist: Artist }) {
             <span className='text-white'>Song image</span>
             <label
               htmlFor='file-upload'
-              className='relative cursor-pointer bg-white rounded-md border border-gray-300 hover:border-gray-400 focus-within:border-blue-500 px-4 py-2 inline-flex items-center space-x-2'
+              className='relative cursor-pointer bg-white bg-opacity-10 rounded-md border border-gray-800 focus-within:border-blue-500 px-4 py-2 inline-flex items-center justify-center space-x-2'
             >
+              <UploadIcon />
               <input id='file-upload' type='file' className='hidden' />
             </label>
           </div>
