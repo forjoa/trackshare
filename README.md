@@ -44,24 +44,6 @@ This package contains TypeScript type definitions for `bcrypt`. It is essential 
 
 `jsonwebtoken` is a library to work with JSON Web Tokens (JWT). It is commonly used for authentication and securely transmitting information between parties as a JSON object.
 
-### next
-
-**Version**: 14.2.3
-
-`next` is the core package for Next.js, a React framework for server-rendered applications, static websites, and more. This package provides the framework and utilities for building and running a Next.js application.
-
-### react
-
-**Version**: ^18
-
-`react` is a JavaScript library for building user interfaces. This package is a peer dependency for Next.js and is required for creating React components.
-
-### react-dom
-
-**Version**: ^18
-
-`react-dom` is a package that provides DOM-specific methods that can be used at the top level of a React app. This package is also a peer dependency for Next.js.
-
 ### sonner
 
 **Version**: ^1.5.0
