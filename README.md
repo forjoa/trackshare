@@ -26,12 +26,6 @@ This is a web aplication to upload the links from your songs, you can upload as 
 
 This package provides a client for interacting with the `libsql` database. It simplifies database operations and helps in establishing a connection with the database.
 
-### @types/bcrypt
-
-**Version**: ^5.0.2
-
-This package contains TypeScript type definitions for `bcrypt`. It is essential for ensuring type safety when using `bcrypt` in a TypeScript project.
-
 ### bcrypt
 
 **Version**: ^5.1.1
