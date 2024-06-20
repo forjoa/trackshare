@@ -24,6 +24,7 @@ This is a web aplication to upload the links from your songs, you can upload as 
 
 The `artists` table stores information about the artists.
 
+```sql
 CREATE TABLE IF NOT EXISTS
   artists (
     artist_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,19 +33,21 @@ CREATE TABLE IF NOT EXISTS
     email TEXT,
     password TEXT
   );
+```
 
-| Column      | Type    | Description               |
-| ----------- | ------- | ------------------------- |
-| artist_id   | INTEGER | Primary key, autoincrement |
-| artist_name | TEXT    | The stage name of the artist |
-| fullname    | TEXT    | The full name of the artist |
-| email       | TEXT    | The email address of the artist |
+| Column      | Type    | Description                       |
+| ----------- | ------- | --------------------------------- |
+| artist_id   | INTEGER | Primary key, autoincrement        |
+| artist_name | TEXT    | The stage name of the artist      |
+| fullname    | TEXT    | The full name of the artist       |
+| email       | TEXT    | The email address of the artist   |
 | password    | TEXT    | The hashed password of the artist |
 
 ### Songs Table
 
 The `songs` table stores information about the songs.
 
+```sql
 CREATE TABLE IF NOT EXISTS
   songs (
     song_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,18 +58,20 @@ CREATE TABLE IF NOT EXISTS
 
 ALTER TABLE songs
 ADD COLUMN photo TEXT;
+```
 
-| Column    | Type    | Description                               |
-| --------- | ------- | ----------------------------------------- |
-| song_id   | INTEGER | Primary key, autoincrement                |
-| title     | TEXT    | The title of the song                     |
-| artist_id | INTEGER | Foreign key referencing `artists` table   |
-| photo     | TEXT    | The filename or path of the song's photo  |
+| Column    | Type    | Description                              |
+| --------- | ------- | ---------------------------------------- |
+| song_id   | INTEGER | Primary key, autoincrement               |
+| title     | TEXT    | The title of the song                    |
+| artist_id | INTEGER | Foreign key referencing `artists` table  |
+| photo     | TEXT    | The filename or path of the song's photo |
 
 ### Platforms Table
 
 The `platforms` table stores information about the platforms where songs are available.
 
+```sql
 CREATE TABLE IF NOT EXISTS
   platforms (
     platform_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -75,13 +80,14 @@ CREATE TABLE IF NOT EXISTS
     song_id INTEGER,
     FOREIGN KEY (song_id) REFERENCES songs (song_id)
   );
+```
 
-| Column      | Type    | Description                               |
-| ----------- | ------- | ----------------------------------------- |
-| platform_id | INTEGER | Primary key, autoincrement                |
-| platform    | TEXT    | The name of the platform                  |
-| link        | TEXT    | The link to the song on the platform      |
-| song_id     | INTEGER | Foreign key referencing `songs` table     |
+| Column      | Type    | Description                           |
+| ----------- | ------- | ------------------------------------- |
+| platform_id | INTEGER | Primary key, autoincrement            |
+| platform    | TEXT    | The name of the platform              |
+| link        | TEXT    | The link to the song on the platform  |
+| song_id     | INTEGER | Foreign key referencing `songs` table |
 
 ## Dependencies
 
