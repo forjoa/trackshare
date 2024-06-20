@@ -31,18 +31,21 @@ export default function UploadForm({ artist }: { artist: Artist }) {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
+    const formData = new FormData()
+    formData.append('artistId', artist.artist_id + '')
+    formData.append('song', songName)
+    if (songPhoto) {
+      formData.append('photo', songPhoto)
+    }
+    platforms.forEach((platform, index) => {
+      formData.append(`platforms[${index}][platform]`, platform.platform)
+      formData.append(`platforms[${index}][link]`, platform.link)
+    })
+
     try {
       const result = await fetch('/api/uploadSong', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          artistId: artist.artist_id,
-          song: songName,
-          platforms,
-          photo: songPhoto
-        }),
+        body: formData,
       })
 
       if (result.ok) {
