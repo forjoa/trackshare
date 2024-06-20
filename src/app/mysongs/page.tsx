@@ -5,6 +5,7 @@ import { Artist, Song } from '@/lib/types'
 import { Toaster, toast } from 'sonner'
 import placeholder from '@/assets/placeholder.svg'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function MySongs() {
   const [user, setUser] = useState<Artist | null>(null)
@@ -47,9 +48,10 @@ export default function MySongs() {
       <div className='flex flex-col gap-4'>
         {mySongs?.length != undefined ? (
           mySongs.map((song, index) => (
-            <div
+            <Link
               key={index}
-              className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4'
+              href={`/songs/${song.song_id}`}
+              className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4 cursor-pointer'
             >
               <Image
                 src={song.photo ? song.photo : placeholder}
@@ -59,7 +61,7 @@ export default function MySongs() {
                 height={100}
               />
               <p>{song.title}</p>
-            </div>
+            </Link>
           ))
         ) : (
           <p>You don&apos;t have any song yet</p>
