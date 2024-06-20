@@ -8,6 +8,7 @@ import { UploadIcon } from '@/assets/icons'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
   const [songName, setSongName] = useState('')
+  const [songPhoto, setSongPhoto] = useState<File>()
   const [platforms, setPlatforms] = useState<PlatformData[]>([
     { platform: '', link: '' },
   ])
@@ -40,6 +41,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
           artistId: artist.artist_id,
           song: songName,
           platforms,
+          photo: songPhoto
         }),
       })
 
@@ -73,7 +75,12 @@ export default function UploadForm({ artist }: { artist: Artist }) {
               className='relative cursor-pointer bg-white bg-opacity-10 rounded-md border border-gray-800 focus-within:border-blue-500 px-4 py-2 inline-flex items-center justify-center space-x-2'
             >
               <UploadIcon />
-              <input id='file-upload' type='file' className='hidden' />
+              <input
+                id='file-upload'
+                type='file'
+                className='hidden'
+                onChange={(e) => setSongPhoto(e.target.files?.[0])}
+              />
             </label>
           </div>
 
