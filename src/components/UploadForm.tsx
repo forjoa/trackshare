@@ -71,7 +71,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
               Enter links to your music on different platforms.
             </p>
           </div>
-          <div className='px-6 flex flex-col'>
+          <div className='px-6 flex flex-col gap-2'>
             <span className='text-white'>Song image</span>
             <label
               htmlFor='file-upload'
