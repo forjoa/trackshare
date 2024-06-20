@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
     const bytes = await photo.arrayBuffer()
     const buffer = Buffer.from(bytes)
-    const photoName = `${Date.now()}-${photo.name.replaceAll(' ', '')}`
+    const photoName = `${Date.now()}-${photo.name.replaceAll(' ', '-')}`
     const path = join(process.cwd(), 'public', 'uploads', photoName)
     await writeFile(path, buffer)
 
