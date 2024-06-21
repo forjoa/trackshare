@@ -32,3 +32,10 @@ export interface Song {
   artist_id?: number
   photo?: string
 }
+
+export interface CompleteSong {
+  song_id: number
+  song_photo: string
+  song_title: string
+  platforms: PlatformData[]
+}
