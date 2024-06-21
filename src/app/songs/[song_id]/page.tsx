@@ -1,4 +1,5 @@
 'use client'
+import { ArrowLeft } from '@/assets/icons'
 import { CompleteSong } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -47,6 +48,9 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
       <div className='md:w-1/2 w-3/4 relative z-20 bg-white bg-opacity-10 rounded-xl py-12'>
         {song && song.song_photo && (
           <div className='w-3/4 m-auto flex flex-col gap-6'>
+            <Link href={'/'}>
+              <ArrowLeft />
+            </Link>
             <Image
               src={song.song_photo}
               alt={song.song_title}
