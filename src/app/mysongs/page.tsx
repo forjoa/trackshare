@@ -56,7 +56,7 @@ export default function MySongs() {
               <Image
                 src={song.photo ? song.photo : placeholder}
                 alt='Song image'
-                className='h-16 w-16 rounded'
+                className='h-16 w-16 rounded object-cover'
                 width={100}
                 height={100}
               />
