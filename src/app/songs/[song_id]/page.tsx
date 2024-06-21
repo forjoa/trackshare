@@ -1,5 +1,6 @@
 'use client'
 import { ArrowLeft } from '@/assets/icons'
+import { getPlatformDetails } from '@/assets/utils/platforms'
 import { CompleteSong } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -48,7 +49,7 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
       <div className='md:w-1/2 w-3/4 relative z-20 bg-white bg-opacity-10 rounded-xl py-12'>
         {song && song.song_photo && (
           <div className='w-3/4 m-auto flex flex-col gap-6'>
-            <Link href={'/'}>
+            <Link href={'/'} className='hover:pl-2 transition-all'>
               <ArrowLeft />
             </Link>
             <Image
@@ -60,15 +61,22 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
             />
             <h1 className='text-xl font-bold'>{song.song_title}</h1>
             <div className='flex flex-col gap-4'>
-              {song.platforms.map((platform, index) => (
-                <Link
-                  key={index}
-                  href={platform.link}
-                  className='rounded-xl p-4 bg-white text-black border-2 border-black shadow-[10px_10px_0px_0px_#000]'
-                >
-                  {platform.platform}
-                </Link>
-              ))}
+              {song.platforms.map((platform, index) => {
+                const platformDetails = getPlatformDetails(platform.platform)
+                if (!platformDetails) return <></>
+
+                const IconComponent = platformDetails.icon
+
+                return (
+                  <Link
+                    key={index}
+                    href={platform.link}
+                    className='rounded-xl p-4 bg-white text-black border-2 border-black shadow-[10px_10px_0px_0px_#000] hover:shadow-[5px_5px_0px_0px_#000] flex items-center gap-2 transition-all'
+                  >
+                    <IconComponent /> {platformDetails.label}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         )}
