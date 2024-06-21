@@ -23,3 +23,9 @@ export const platforms: PlatformsSelect[] = [
     icon: Youtube,
   },
 ]
+
+export function getPlatformDetails(value: string) {
+  const platform = platforms.find((p) => p.value === value)
+  if (!platform) return null
+  return { label: platform.label, icon: platform.icon }
+}
