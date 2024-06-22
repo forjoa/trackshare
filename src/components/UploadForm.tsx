@@ -6,9 +6,11 @@ import { Artist, EventI, PlatformData } from '@/lib/types'
 import { Toaster, toast } from 'sonner'
 import { UploadIcon } from '@/assets/icons'
 
+import { CldUploadWidget, CloudinaryUploadWidgetInfo } from 'next-cloudinary'
+
 export default function UploadForm({ artist }: { artist: Artist }) {
+  const [resource, setResource] = useState<CloudinaryUploadWidgetInfo>()
   const [songName, setSongName] = useState('')
-  const [songPhoto, setSongPhoto] = useState<File>()
   const [platforms, setPlatforms] = useState<PlatformData[]>([
     { platform: '', link: '' },
   ])
@@ -34,8 +36,8 @@ export default function UploadForm({ artist }: { artist: Artist }) {
     const formData = new FormData()
     formData.append('artistId', artist.artist_id + '')
     formData.append('song', songName)
-    if (songPhoto) {
-      formData.append('photo', songPhoto)
+    if (resource) {
+      formData.append('photo', resource.secure_url)
     }
     platforms.forEach((platform, index) => {
       formData.append(`platforms[${index}][platform]`, platform.platform)
@@ -73,18 +75,28 @@ export default function UploadForm({ artist }: { artist: Artist }) {
           </div>
           <div className='px-6 flex flex-col gap-2'>
             <span className='text-white'>Song image</span>
-            <label
-              htmlFor='file-upload'
-              className='relative cursor-pointer bg-white bg-opacity-10 rounded-md border border-gray-800 focus-within:border-blue-500 px-4 py-2 inline-flex items-center justify-center space-x-2'
+            <CldUploadWidget
+              signatureEndpoint='/api/uploadImage'
+              onSuccess={(result, { widget }) => {
+                setResource(result?.info as CloudinaryUploadWidgetInfo)
+                widget.close()
+              }}
             >
-              <UploadIcon />
-              <input
-                id='file-upload'
-                type='file'
-                className='hidden'
-                onChange={(e) => setSongPhoto(e.target.files?.[0])}
-              />
-            </label>
+              {({ open }) => {
+                function handleOnClick() {
+                  setResource(undefined)
+                  open()
+                }
+                return (
+                  <button
+                    onClick={handleOnClick}
+                    className='bg-white bg-opacity-10 border border-gray-800 cursor-pointer px-4 py-2 rounded-md flex justify-center'
+                  >
+                    <UploadIcon />
+                  </button>
+                )
+              }}
+            </CldUploadWidget>
           </div>
 
           <div className='px-6 pb-6 pt-2 grid gap-2'>

@@ -6,6 +6,7 @@ import { Toaster, toast } from 'sonner'
 import placeholder from '@/assets/placeholder.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CldImage } from 'next-cloudinary'
 
 export default function MySongs() {
   const [user, setUser] = useState<Artist | null>(null)
@@ -53,12 +54,12 @@ export default function MySongs() {
               href={`/songs/${song.song_id}`}
               className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4 cursor-pointer'
             >
-              <Image
-                src={song.photo ? song.photo : placeholder}
-                alt='Song image'
-                className='h-16 w-16 rounded object-cover'
+              <CldImage
+                className='object-cover'
                 width={100}
                 height={100}
+                src={song.photo ?? placeholder}
+                alt={song.title}
               />
               <p>{song.title}</p>
             </Link>

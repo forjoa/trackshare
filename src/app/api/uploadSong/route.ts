@@ -1,9 +1,7 @@
 'use server'
 import { db } from '@/lib/db'
 import { PlatformData } from '@/lib/types'
-import { writeFile } from 'fs/promises'
 import { NextRequest, NextResponse } from 'next/server'
-import { join } from 'path'
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const artistId = body.get('artistId') as string
     const song = body.get('song') as string
-    const photo: File | null = body.get('photo') as unknown as File
+    const photo = body.get('photo') as string
 
     if (!photo)
       return NextResponse.json({
@@ -44,18 +42,10 @@ export async function POST(req: NextRequest) {
 
     const transaction = await db.transaction('write')
 
-    const bytes = await photo.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    const photoName = `${Date.now()}-${photo.name.replaceAll(' ', '-')}`
-    const path = join(process.cwd(), 'public', 'uploads', photoName)
-    await writeFile(path, buffer)
-
-    const imagePath = `/uploads/${photoName}`
-
     try {
       const result = await transaction.execute({
         sql: 'INSERT INTO songs(title, artist_id, photo) VALUES (?, ?, ?)',
-        args: [song, artistId, imagePath],
+        args: [song, artistId, photo],
       })
 
       const songId = result.lastInsertRowid as bigint

@@ -2,6 +2,7 @@
 import { ArrowLeft } from '@/assets/icons'
 import { getPlatformDetails } from '@/assets/utils/platforms'
 import { CompleteSong } from '@/lib/types'
+import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -36,12 +37,12 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
       <Toaster position='top-center' />
       {song && song.song_photo && (
         <div className='absolute inset-0 overflow-hidden -z-10'>
-          <Image
+          <CldImage
             src={song.song_photo}
+            width={1000}
+            height={1000}
             alt='Background Image'
-            layout='fill'
-            objectFit='cover'
-            className='transform rotate-180 blur-lg scale-150'
+            className='transform rotate-180 blur-2xl scale-150 object-cover m-auto'
           />
           <div className='absolute inset-0 bg-black opacity-50'></div>
         </div>
@@ -52,12 +53,12 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
             <Link href={'/'} className='hover:pl-2 transition-all'>
               <ArrowLeft />
             </Link>
-            <Image
+            <CldImage
               src={song.song_photo}
               alt={song.song_title}
-              width={1000}
-              height={1000}
-              className='aspect-square object-cover rounded-xl'
+              width={500}
+              height={500}
+              className='aspect-square object-cover rounded-xl m-auto'
             />
             <h1 className='text-xl font-bold'>{song.song_title}</h1>
             <div className='flex flex-col gap-4'>
