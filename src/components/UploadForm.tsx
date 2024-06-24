@@ -110,7 +110,13 @@ export default function UploadForm({ artist }: { artist: Artist }) {
                 }}
               </CldUploadWidget>
             ) : (
-              <CldImage src={resource.secure_url} alt='Song photo' width={300} height={200} className='objet-cover m-auto rounded' />
+              <CldImage
+                src={resource.secure_url}
+                alt='Song photo'
+                width={300}
+                height={200}
+                className='objet-cover m-auto rounded'
+              />
             )}
           </div>
 
