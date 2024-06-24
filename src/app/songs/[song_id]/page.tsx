@@ -36,13 +36,13 @@ export default function SongLink({ params }: { params: { song_id: number } }) {
     <div className='absolute w-full h-screen grid place-items-center z-[100]'>
       <Toaster position='top-center' />
       {song && song.song_photo && (
-        <div className='absolute inset-0 overflow-hidden -z-10'>
+        <div className='absolute inset-0 overflow-hidden -z-10 h-screen'>
           <CldImage
             src={song.song_photo}
             width={1000}
-            height={1000}
+            height={2000}
             alt='Background Image'
-            className='transform rotate-180 blur-2xl scale-150 object-cover m-auto'
+            className='transform rotate-180 blur-2xl scale-150 object-cover m-auto h-screen'
           />
           <div className='absolute inset-0 bg-black opacity-50'></div>
         </div>
