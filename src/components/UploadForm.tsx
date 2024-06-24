@@ -6,10 +6,16 @@ import { Artist, EventI, PlatformData } from '@/lib/types'
 import { Toaster, toast } from 'sonner'
 import { UploadIcon } from '@/assets/icons'
 
-import { CldUploadWidget, CloudinaryUploadWidgetInfo } from 'next-cloudinary'
+import {
+  CldImage,
+  CldUploadWidget,
+  CloudinaryUploadWidgetInfo,
+} from 'next-cloudinary'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
-  const [resource, setResource] = useState<CloudinaryUploadWidgetInfo>()
+  const [resource, setResource] = useState<CloudinaryUploadWidgetInfo | null>(
+    null
+  )
   const [songName, setSongName] = useState('')
   const [platforms, setPlatforms] = useState<PlatformData[]>([
     { platform: '', link: '' },
@@ -75,28 +81,32 @@ export default function UploadForm({ artist }: { artist: Artist }) {
           </div>
           <div className='px-6 flex flex-col gap-2'>
             <span className='text-white'>Song image</span>
-            <CldUploadWidget
-              signatureEndpoint='/api/uploadImage'
-              onSuccess={(result, { widget }) => {
-                setResource(result?.info as CloudinaryUploadWidgetInfo)
-                widget.close()
-              }}
-            >
-              {({ open }) => {
-                function handleOnClick() {
-                  setResource(undefined)
-                  open()
-                }
-                return (
-                  <button
-                    onClick={handleOnClick}
-                    className='bg-white bg-opacity-10 border border-gray-800 cursor-pointer px-4 py-2 rounded-md flex justify-center'
-                  >
-                    <UploadIcon />
-                  </button>
-                )
-              }}
-            </CldUploadWidget>
+            {resource === null ? (
+              <CldUploadWidget
+                signatureEndpoint='/api/uploadImage'
+                onSuccess={(result, { widget }) => {
+                  setResource(result?.info as CloudinaryUploadWidgetInfo)
+                  widget.close()
+                }}
+              >
+                {({ open }) => {
+                  function handleOnClick() {
+                    setResource(null)
+                    open()
+                  }
+                  return (
+                    <button
+                      onClick={handleOnClick}
+                      className='bg-white bg-opacity-10 border border-gray-800 cursor-pointer px-4 py-2 rounded-md flex justify-center'
+                    >
+                      <UploadIcon />
+                    </button>
+                  )
+                }}
+              </CldUploadWidget>
+            ) : (
+              <CldImage src={resource.secure_url} alt='Song photo' width={300} height={200} className='objet-cover m-auto rounded' />
+            )}
           </div>
 
           <div className='px-6 pb-6 pt-2 grid gap-2'>
