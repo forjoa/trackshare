@@ -11,6 +11,7 @@ import {
   CldUploadWidget,
   CloudinaryUploadWidgetInfo,
 } from 'next-cloudinary'
+import { useRouter } from 'next/navigation'
 
 export default function UploadForm({ artist }: { artist: Artist }) {
   const [resource, setResource] = useState<CloudinaryUploadWidgetInfo | null>(
@@ -20,6 +21,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
   const [platforms, setPlatforms] = useState<PlatformData[]>([
     { platform: '', link: '' },
   ])
+  const router = useRouter()
 
   const handlePlatformChange = (index: number, event: EventI) => {
     const newPlatforms = [...platforms]
@@ -58,6 +60,9 @@ export default function UploadForm({ artist }: { artist: Artist }) {
 
       if (result.ok) {
         toast.success('Song uploaded correctly')
+        setTimeout(() => {
+          router.push('/mysongs')
+        }, 3000)
       } else {
         toast.error('Error uploading your song')
       }
