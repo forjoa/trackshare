@@ -74,7 +74,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
   return (
     <div className='mx-auto max-w-md space-y-6'>
       <Toaster position='top-center' />
-      <div className='rounded-lg border border-gray-800 bg-card text-card-foreground shadow-sm w-full max-w-md'>
+      <div className='rounded-lg bg-[#262628] bg-card text-card-foreground shadow-sm w-full max-w-md'>
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col space-y-1.5 p-6'>
             <h3 className='whitespace-nowrap text-2xl font-semibold leading-none tracking-tight'>
@@ -185,7 +185,7 @@ export default function UploadForm({ artist }: { artist: Artist }) {
           <div className='flex items-center px-6 pb-6'>
             <button
               type='submit'
-              className='bg-white text-black inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full'
+              className='bg-[#FF822E] text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full'
             >
               Save
             </button>
