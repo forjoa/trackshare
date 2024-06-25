@@ -39,12 +39,16 @@ const keyFeatures = [
 export default function Home() {
   return (
     <main className='flex-1'>
-      <section className='w-full pt-12 md:pt-24 lg:pt-32 border-y border-gray-800 flex justify-center'>
+      <section className='w-full pt-12 md:pt-24 lg:pt-32 border-b border-gray-800 flex justify-center'>
         <div className='container space-y-10 xl:space-y-16'>
           <div className='grid gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16'>
             <div>
               <h1 className='lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]'>
-                Share <span className='bg-gradient-to-r from-[#F2761D] to-[#FF9F63] bg-clip-text text-transparent'>Your Music</span> with the World
+                Share{' '}
+                <span className='bg-gradient-to-r from-[#F2761D] to-[#FF9F63] bg-clip-text text-transparent'>
+                  Your Music
+                </span>{' '}
+                with the World
               </h1>
             </div>
             <div className='flex flex-col items-start space-y-4'>
@@ -54,7 +58,7 @@ export default function Home() {
                 fellow music enthusiasts.
               </p>
               <Link
-                className='inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300'
+                className='inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 bg-[#FF822E] text-white hover:bg-[#FF9F63] focus-visible:ring-gray-300'
                 href='/upload'
               >
                 Upload Your Songs
