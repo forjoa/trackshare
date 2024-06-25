@@ -82,7 +82,11 @@ export default function Home() {
                 Key Features
               </div>
               <h2 className='text-3xl font-bold tracking-tighter sm:text-5xl'>
-                Discover, Share, and Connect
+                Discover,{' '}
+                <span className='bg-gradient-to-r from-[#FF9F63] to-[#F2761D] bg-clip-text text-transparent'>
+                  Share
+                </span>
+                , and Connect
               </h2>
               <p className='max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400'>
                 Our platform makes it easy to upload, share, and discover new
