@@ -56,7 +56,7 @@ export default function Register({ changePages }: ChangePages) {
         </p>
       </div>
       <form
-        className='rounded-lg border border-gray-800 shadow-sm'
+        className='rounded-lg bg-[#262628] shadow-sm'
         onSubmit={handleSubmit}
       >
         <div className='p-6 space-y-4'>
@@ -128,7 +128,7 @@ export default function Register({ changePages }: ChangePages) {
         </div>
         <div className='flex items-center p-6'>
           <button
-            className='bg-white text-black inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 px-4 py-2 w-full'
+            className='bg-[#FF822E] text-white inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 px-4 py-2 w-full'
             type='submit'
           >
             Register
