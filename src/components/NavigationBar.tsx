@@ -37,7 +37,7 @@ export default function NavigationBar() {
           </Link>
         )}
         <Link
-          className='text-sm font-medium hover:underline underline-offset-4 bg-white text-black py-2 px-4 rounded'
+          className='text-sm font-medium hover:underline underline-offset-4 bg-[#FF822E] text-white py-2 px-4 rounded'
           href='/upload'
         >
           Upload
