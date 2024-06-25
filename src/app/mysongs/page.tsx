@@ -43,7 +43,7 @@ export default function MySongs() {
   }, [user])
 
   return (
-    <div className='mx-auto max-w-md space-y-6 border border-gray-800 rounded p-6 min-w-[350px]'>
+    <div className='mx-auto max-w-md space-y-6 bg-[#262628] rounded p-6 min-w-[350px]'>
       <Toaster position='top-center' />
       <p className='font-bold text-xl'>My songs:</p>
       <div className='flex flex-col gap-4'>
@@ -52,10 +52,10 @@ export default function MySongs() {
             <Link
               key={index}
               href={`/songs/${song.song_id}`}
-              className='bg-gray-950 py-4 px-6 rounded flex items-center gap-4 cursor-pointer'
+              className='bg-[#3E271B] py-4 px-6 rounded flex items-center gap-4 cursor-pointer border border-[#FF822E]'
             >
               <CldImage
-                className='object-cover'
+                className='object-cover w-[100px] aspect-square rounded'
                 width={100}
                 height={100}
                 src={song.photo ?? placeholder}
